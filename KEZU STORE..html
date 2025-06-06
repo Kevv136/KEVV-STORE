@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEZU STORE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Warna latar belakang abu-abu sangat muda yang sedikit lebih hangat */
+            color: #333; /* Warna teks gelap */
+        }
+        /* Styling untuk scroll-behavior halus saat navigasi */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Styling untuk tombol hover effect */
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        /* Styling untuk product card hover effect */
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animasi Gerakan Gradien */
+        /* Definisi keyframes untuk pergerakan gradien */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Kelas untuk menerapkan animasi gradien pada elemen */
+        .animated-gradient-bg {
+            background-size: 400% 400%; /* Ukuran background lebih besar dari container untuk efek gerakan */
+            animation: gradientAnimation 15s ease infinite; /* Animasi berulang tanpa henti */
+        }
+
+        /* Animasi Fade-in untuk elemen saat muncul di viewport */
+        .animate-fade-in-down {
+            opacity: 0; /* Mulai dengan tidak terlihat */
+            transform: translateY(-20px); /* Mulai sedikit di atas */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transisi halus */
+        }
+        .animate-fade-in-up {
+            opacity: 0; /* Mulai dengan tidak terlihat */
+            transform: translateY(20px); /* Mulai sedikit di bawah */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transisi halus */
+        }
+        /* Kelas 'visible' ditambahkan oleh JavaScript saat elemen masuk viewport */
+        .animate-fade-in-down.visible,
+        .animate-fade-in-up.visible {
+            opacity: 1; /* Menjadi terlihat */
+            transform: translateY(0); /* Kembali ke posisi semula */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <nav class="container mx-auto flex justify-between items-center px-4">
+            <a href="#" class="text-3xl font-bold text-teal-600 rounded-md p-2 hover:bg-teal-50 transition duration-300">KEZU STORE</a>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="#beranda" class="text-gray-700 hover:text-teal-600 font-semibold transition duration-300 rounded-md p-2 hover:bg-gray-100">Beranda</a></li>
+                <li><a href="#produk" class="text-gray-700 hover:text-teal-600 font-semibold transition duration-300 rounded-md p-2 hover:bg-gray-100">Produk</a></li>
+                <li><a href="#tentang" class="text-gray-700 hover:text-teal-600 font-semibold transition duration-300 rounded-md p-2 hover:bg-gray-100">Tentang Kami</a></li>
+                <li><a href="#kontak" class="text-gray-700 hover:text-teal-600 font-semibold transition duration-300 rounded-md p-2 hover:bg-gray-100">Kontak</a></li>
+                <li>
+                    <a href="#keranjang" class="text-gray-700 hover:text-teal-600 font-semibold transition duration-300 rounded-md p-2 hover:bg-gray-100 flex items-center">
+                        <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        Keranjang (0)
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="beranda" class="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 animated-gradient-bg text-white py-20 md:py-32 flex items-center min-h-screen">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">Temukan Produk Terbaik di KEZU STORE</h1>
+            <p class="text-xl md:text-2xl mb-8 animate-fade-in-up">Kualitas, gaya, dan harga terbaik untuk kebutuhan Anda.</p>
+            <a href="#produk" class="bg-white text-teal-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-teal-100 transition duration-300 ease-in-out btn-primary">Lihat Produk Kami</a>
+        </div>
+    </section>
+
+    <section id="produk" class="bg-gradient-to-br from-blue-100 to-green-100 animated-gradient-bg py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-12">Produk Unggulan</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg product-card transition duration-300 ease-in-out flex flex-col items-center text-center">
+                    <img src="AMPREM.jpg" alt="Produk 1" class="w-full h-100 object-cover rounded-md mb-4 shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">AM PREMIUM</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">Bagi kalian yang ingin membeli Alight Motion tetapi harga nya mahal? Tenang, di KEZU STORE menyediakan alight motion premium yang akan memudahkan anda dalam mengedit foto/video anda </p>
+                    <span class="text-2xl font-bold text-teal-700 mb-4">1 BULAN : 5K | 1 TAHUN : 10K</span>
+                    <button class="bg-teal-600 text-white font-bold py-2 px-6 rounded-full shadow-md hover:bg-teal-700 transition duration-300 btn-primary">Tambahkan ke Keranjang</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg product-card transition duration-300 ease-in-out flex flex-col items-center text-center">
+                    <img src="https://placehold.co/300x200/e0f2f7/26a69a?text=Produk+2" alt="Produk 2" class="w-full h-48 object-cover rounded-md mb-4 shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Produk Luar Biasa Lainnya</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">Ini adalah produk yang sangat bagus dengan fitur-fitur menakjubkan yang akan Anda sukai.</p>
+                    <span class="text-2xl font-bold text-teal-700 mb-4">Rp 225.000</span>
+                    <button class="bg-teal-600 text-white font-bold py-2 px-6 rounded-full shadow-md hover:bg-teal-700 transition duration-300 btn-primary">Tambahkan ke Keranjang</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg product-card transition duration-300 ease-in-out flex flex-col items-center text-center">
+                    <img src="https://placehold.co/300x200/e0f2f7/26a69a?text=Produk+3" alt="Produk 3" class="w-full h-48 object-cover rounded-md mb-4 shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Item Wajib Punya</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">Jangan lewatkan produk ini! Sangat fungsional dan bergaya.</p>
+                    <span class="text-2xl font-bold text-teal-700 mb-4">Rp 99.000</span>
+                    <button class="bg-teal-600 text-white font-bold py-2 px-6 rounded-full shadow-md hover:bg-teal-700 transition duration-300 btn-primary">Tambahkan ke Keranjang</button>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-teal-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-teal-700 transition duration-300 ease-in-out btn-primary">Lihat Semua Produk</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="bg-gradient-to-br from-orange-100 to-red-100 animated-gradient-bg py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-12">Tentang Kami</h2>
+            <div class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-700 text-center">
+                <p class="mb-4">KEZU STORE didirikan pada tahun 2025 dengan visi untuk menyediakan produk-produk aplikasi premium dan jasa edit kepada pelanggan kami. Kami percaya bahwa setiap orang berhak mendapatkan produk terbaik dengan harga yang terjangkau.</p>
+                <p class="mb-4">Misi kami adalah untuk menjadi destinasi utama untuk produk-produk inovatif, memberikan pengalaman belanja yang luar biasa. Kami sangat bersemangat tentang kepuasan pelanggan dan inovasi produk.</p>
+                <p>Terima kasih telah memilih KEZU STORE. Kami berharap Anda menikmati pengalaman berbelanja Anda!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="bg-gradient-to-br from-blue-100 to-purple-100 animated-gradient-bg py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-12">Hubungi Kami</h2>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-xl product-card transition duration-300 ease-in-out">
+                <p class="text-center text-gray-700 mb-6">Punya pertanyaan? Jangan ragu untuk menghubungi kami!</p>
+                <form class="space-y-6">
+                    <div>
+                        <label for="nama_kontak" class="block text-gray-700 text-sm font-bold mb-2">Nama Lengkap</label>
+                        <input type="text" id="nama_kontak" name="nama_kontak" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-200" placeholder="Nama Anda">
+                    </div>
+                    <div>
+                        <label for="email_kontak" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                        <input type="email" id="email_kontak" name="email_kontak" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-200" placeholder="email@contoh.com">
+                    </div>
+                    <div>
+                        <label for="pesan_kontak" class="block text-gray-700 text-sm font-bold mb-2">Pesan</label>
+                        <textarea id="pesan_kontak" name="pesan_kontak" rows="6" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition duration-200" placeholder="Tulis pesan Anda di sini..."></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-teal-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-teal-700 transition duration-300 ease-in-out btn-primary">Kirim Pesan</button>
+                    </div>
+                </form>
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 mb-2">Atau hubungi kami di:</p>
+                    <p class="text-lg font-semibold text-gray-800">Email: info@kezustore.com</p>
+                    <p class="text-lg font-semibold text-gray-800">Telepon: (123) 456-7890</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keranjang" class="bg-gradient-to-br from-gray-50 to-gray-200 py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-bold text-center text-gray-800 mb-12">Keranjang Belanja Anda</h2>
+            <div id="cart-items-container" class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-xl">
+                <p class="text-center text-gray-600">Keranjang Anda kosong. Mari mulai berbelanja!</p>
+                <div class="mt-8 pt-4 border-t border-gray-200 flex justify-between items-center">
+                    <span class="text-xl font-bold text-gray-800">Total:</span>
+                    <span id="cart-total" class="text-xl font-bold text-teal-700">Rp 0</span>
+                </div>
+                <div class="text-center mt-8">
+                    <button class="bg-teal-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-teal-700 transition duration-300 ease-in-out btn-primary">Lanjutkan ke Pembayaran</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center px-4">
+            <p>&copy; 2025 KEZU STORE. Semua Hak Dilindungi.</p>
+            <p class="text-sm mt-2">Dibuat dengan ❤️ dan Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi untuk menambahkan kelas 'visible' saat elemen terlihat di viewport
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-fade-in-down, .animate-fade-in-up');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                // Jika elemen berada di dalam viewport (sebagian atau seluruhnya)
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                } else {
+                    // Opsional: hapus kelas 'visible' jika elemen keluar dari viewport
+                    // Ini akan membuat animasi terulang setiap kali elemen masuk/keluar
+                    // el.classList.remove('visible');
+                }
+            });
+        }
+
+        // Inisialisasi: Panggil fungsi saat DOM dimuat untuk elemen yang sudah terlihat di awal
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pastikan elemen memiliki properti CSS opacity dan transform yang sesuai untuk animasi
+            animateOnScroll();
+        });
+
+        // Panggil fungsi saat menggulir halaman
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

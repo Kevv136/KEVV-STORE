@@ -1,0 +1,59 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Warna latar belakang abu-abu sangat muda yang sedikit lebih hangat */
+    color: #333; /* Warna teks gelap */
+}
+/* Styling untuk scroll-behavior halus saat navigasi */
+html {
+    scroll-behavior: smooth;
+}
+/* Styling untuk tombol hover effect */
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/* Styling untuk product card hover effect */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Animasi Gerakan Gradien */
+/* Definisi keyframes untuk pergerakan gradien */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Kelas untuk menerapkan animasi gradien pada elemen */
+.animated-gradient-bg {
+    background-size: 400% 400%; /* Ukuran background lebih besar dari container untuk efek gerakan */
+    animation: gradientAnimation 15s ease infinite; /* Animasi berulang tanpa henti */
+}
+
+/* Animasi Fade-in untuk elemen saat muncul di viewport */
+.animate-fade-in-down {
+    opacity: 0; /* Mulai dengan tidak terlihat */
+    transform: translateY(-20px); /* Mulai sedikit di atas */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transisi halus */
+}
+.animate-fade-in-up {
+    opacity: 0; /* Mulai dengan tidak terlihat */
+    transform: translateY(20px); /* Mulai sedikit di bawah */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transisi halus */
+}
+/* Kelas 'visible' ditambahkan oleh JavaScript saat elemen masuk viewport */
+.animate-fade-in-down.visible,
+.animate-fade-in-up.visible {
+    opacity: 1; /* Menjadi terlihat */
+    transform: translateY(0); /* Kembali ke posisi semula */
+}
+
+/* Kelas baru untuk latar belakang animasi gabungan */
+.unified-animated-background {
+    /* Gradien dengan beberapa warna untuk efek perubahan warna yang kaya */
+    background: linear-gradient(270deg, #6a11cb, #2575fc, #ec008c, #fc6767, #ff8c00, #f7b733);
+    background-size: 600% 600%; /* Ukuran lebih besar untuk pergerakan gradien yang luas */
+    animation: gradientAnimation 30s ease infinite; /* Durasi animasi lebih lama untuk transisi yang halus */
+}
