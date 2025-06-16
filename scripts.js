@@ -316,6 +316,29 @@ let cart = []; // Array untuk menyimpan item di keranjang
         }, 2000); // Simulasi waktu proses 2 detik
     });
 
+    // Event listener untuk perubahan metode pembayaran
+    paymentMethodSelect.addEventListener('change', function() {
+        if (paymentMethodSelect.value === 'QRIS') {
+            paymentStatusMessage.innerHTML = `
+                <p>Silakan scan QR Code di bawah untuk menyelesaikan pembayaran:</p>
+                <img src="qris v1.jpg" alt="QRIS Code" class="mx-auto mt-4 w-60 h-auto">
+                <p class="text-sm text-gray-500 mt-2">Pastikan Anda membayar ke NMID:ID72081213832784 (Kevv)</p>
+            `;
+        } else if (paymentMethodSelect.value === 'Transfer Bank') {
+            paymentStatusMessage.innerHTML = `
+                <p>Silakan transfer ke rekening bank berikut:</p>
+                <p class="font-bold">BCA: 123-456-7890 a.n. KEVV STORE</p>
+                <p class="font-bold">Mandiri: 098-765-4321 a.n. KEVV STORE</p>
+            `;
+        } else if (paymentMethodSelect.value === 'E-Wallet') {
+            paymentStatusMessage.innerHTML = `
+                <p>Pembayaran via E-Wallet akan diproses melalui link pembayaran atau nomor tujuan yang akan diberikan setelah checkout.</p>
+            `;
+        } else {
+            paymentStatusMessage.innerHTML = ''; // Kosongkan jika tidak ada metode yang dipilih
+        }
+    });
+
     // Inisialisasi tampilan keranjang saat halaman dimuat
     updateCartDisplay();
 });
